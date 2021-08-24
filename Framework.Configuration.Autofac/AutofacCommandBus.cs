@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Framework.Application;
+using Polly;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,22 +17,6 @@ namespace Framework.Configuration.Autofac
         public AutofacCommandBus(ILifetimeScope container)
         {
             this.container = container;
-
-            Timer t = new Timer(TimeSpan.FromSeconds(10).TotalSeconds); // Set the time (5 mins in this case)
-            t.AutoReset = true;
-            t.Elapsed += new System.Timers.ElapsedEventHandler(CallRetryableCommands);
-            t.Start();
-        }
-
-        private void CallRetryableCommands(object sender, ElapsedEventArgs e)
-        {
-            foreach (var item in retryableCommands
-                .OfType<IRetryableCommand>()
-                .Where(p => p.RetryCount > 0))
-            {
-                item.RetryCount = item.RetryCount - 1;
-                Send(item);
-            }
         }
 
         public void Send<TCommand>(TCommand command) where TCommand : ICommand
@@ -40,24 +25,13 @@ namespace Framework.Configuration.Autofac
 
             if (command is ILoggableCommand)
                 commandhandler = new CommandHanlerLoggerDecorator<TCommand>(commandhandler);
-            try
-            {
-                commandhandler.Handle(command);
-            }
-            catch (Exception )
-            {
-                if (command is IRetryableCommand)
-                {
-                    retryableCommands.Add(command );
-                    return;
-                }
 
-                throw;
-            }
+            if (command is IRetryableCommand)
+                commandhandler = new RetryableCommandHanlerDecorator<TCommand>(commandhandler);
 
+            commandhandler = new ExceptionLoggerCommandHanlerDecorator<TCommand>(commandhandler);
+            commandhandler.Handle(command);
         }
         
-
-        IList<object>retryableCommands = new List<object>();
     }
 }
