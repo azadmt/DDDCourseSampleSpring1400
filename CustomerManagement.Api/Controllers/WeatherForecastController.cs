@@ -31,7 +31,7 @@ namespace CustomerManagement.Api.Controllers
         public IActionResult Get()
         {
            // CommandBus.Send(new CreateCustomerCommand { NationalCode = "13123123" });
-            CommandBus.Send(new ApproveCustomerCommand { });
+           // CommandBus.Send(new ApproveCustomerCommand { });
             return Ok();
         }
     }

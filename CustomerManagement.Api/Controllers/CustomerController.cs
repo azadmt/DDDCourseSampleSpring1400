@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CustomerManagement.ApplicationService.Contract.DataContract;
 using CustomerManagement.ApplicationService.Contract.ServiceContract;
-
+using Framework.Application;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerManagement.Api.Controllers
@@ -14,19 +15,22 @@ namespace CustomerManagement.Api.Controllers
     {
         // commandbus
         readonly ICustomerService _customerService;
-        public CustomerController(ICustomerService customerService )
+        private readonly ICommandBus commandBus;
+
+        public CustomerController(ICommandBus commandBus)
         {
-            _customerService = customerService;
+ 
+            this.commandBus = commandBus;
         }
 
         [HttpPost]
-        public IActionResult CreateCustomer(string nationalCode)
+        public IActionResult CreateCustomer(CreateCustomerCommand command)
         {
-            _customerService.CreateCustomer(nationalCode);
+            commandBus.Send(command);
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("Approve")]
         public IActionResult Approve(Guid customerId)
         {
             _customerService.Approve(customerId);

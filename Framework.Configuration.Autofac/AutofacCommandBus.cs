@@ -14,14 +14,14 @@ namespace Framework.Configuration.Autofac
 
         ILifetimeScope container;
         public AutofacCommandBus(ILifetimeScope container)
-        {
-            // TODO : implement retry Command
+       {
+            //// TODO : implement retry Command
             this.container = container;
 
-            Timer t = new Timer(TimeSpan.FromSeconds(10).TotalSeconds); // Set the time (5 mins in this case)
-            t.AutoReset = true;
-            t.Elapsed += new System.Timers.ElapsedEventHandler(CallRetryableCommands);
-            t.Start();
+            //Timer t = new Timer(TimeSpan.FromSeconds(10).TotalSeconds); // Set the time (5 mins in this case)
+            //t.AutoReset = true;
+            //t.Elapsed += new System.Timers.ElapsedEventHandler(CallRetryableCommands);
+            //t.Start();
         }
 
         private void CallRetryableCommands(object sender, ElapsedEventArgs e)

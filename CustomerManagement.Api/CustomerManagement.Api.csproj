@@ -6,6 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.5" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.5" />
@@ -15,7 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CustomerManagement.ApplicationService.Contract\CustomerManagement.ApplicationService.Contract.csproj" />
     <ProjectReference Include="..\CustomerManagement.ApplicationService\CustomerManagement.ApplicationService.csproj" />
-    <ProjectReference Include="..\CustomerManagement.Perdidtence.Ef\CustomerManagement.Perdidtence.Ef.csproj" />
+    <ProjectReference Include="..\CustomerManagement.Perdidtence.Ef\CustomerManagement.Persistence.Ef.csproj" />
     <ProjectReference Include="..\Framework.Configuration.Autofac\Framework.Configuration.Autofac.csproj" />
   </ItemGroup>
 

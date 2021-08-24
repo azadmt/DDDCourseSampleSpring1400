@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CustomerManagement.Perdidtence.Ef
+namespace CustomerManagement.Persistence.Ef
 {
     public class CustomerRepository : ICustomerRepository
     {
         private readonly CustomerManagementDbContext dbContext;
 
-        //public CustomerRepository(CustomerManagementDbContext dbContext)
-        //{
-        //    this.dbContext = dbContext;
-        //}
+        public CustomerRepository(CustomerManagementDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
         public void Add(CustomerAggregate customerAggregate)
         {
             dbContext.Add(customerAggregate);
+            dbContext.SaveChanges();
         }
 
         public CustomerAggregate Get(Guid id)
