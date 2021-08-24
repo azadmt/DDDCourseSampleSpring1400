@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CustomerManagement.ApplicationService.Contract\CustomerManagement.ApplicationService.Contract.csproj" />
+    <ProjectReference Include="..\CustomerManagement.ApplicationService\CustomerManagement.ApplicationService.csproj" />
+    <ProjectReference Include="..\CustomerManagement.Perdidtence.Ef\CustomerManagement.Perdidtence.Ef.csproj" />
+    <ProjectReference Include="..\Framework.Configuration.Autofac\Framework.Configuration.Autofac.csproj" />
+  </ItemGroup>
+
+
+</Project>
