@@ -5,6 +5,7 @@ namespace Framework.Domain
     public abstract class Entity
     {
         public Guid Id { get; private set; }
+        public byte[] RowVersion { get; set; }
         public Entity(Guid id)
         {
             Id = id;

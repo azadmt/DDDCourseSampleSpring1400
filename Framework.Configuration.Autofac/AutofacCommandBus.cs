@@ -15,10 +15,12 @@ namespace Framework.Configuration.Autofac
 
         ILifetimeScope container;
         public AutofacCommandBus(ILifetimeScope container)
-        {
-            // TODO : implement retry Command
+       {
+            //// TODO : implement retry Command
             this.container = container;
         }
+
+
 
         public void Send<TCommand>(TCommand command) where TCommand : ICommand
         {

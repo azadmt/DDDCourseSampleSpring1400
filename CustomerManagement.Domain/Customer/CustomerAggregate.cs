@@ -1,16 +1,19 @@
-﻿using System;
+﻿using Framework.Domain;
+using System;
 
 namespace CustomerManagement.Domain.Customer
 {
-    public class CustomerAggregate
+    public class CustomerAggregate : Entity
     {
-        public Guid Id { get; private set; }
+        public string Name { get; private set; }
         public string NationalCode { get; private set; }
+        public Address HomeAddress { get; private set; }
+        public Address WorkAddress { get; private set; }
 
-        public CustomerAggregate(Guid id, string nationalCode)
+        public CustomerAggregate(Guid id,string name, string nationalCode) : base(id)
         {
-            Id = id;
             NationalCode = nationalCode;
+            Name = name;
         }
 
         public void Approve()

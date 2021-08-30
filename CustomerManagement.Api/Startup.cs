@@ -7,12 +7,14 @@ using CustomerManagement.ApplicationService.Contract.DataContract;
 using CustomerManagement.ApplicationService.Contract.ServiceContract;
 using CustomerManagement.ApplicationService.Customer;
 using CustomerManagement.Domain.Customer;
-using CustomerManagement.Perdidtence.Ef;
+using CustomerManagement.Persistence.Ef;
 using Framework.Application;
 using Framework.Configuration.Autofac;
+using Framework.Core.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,7 +37,7 @@ namespace CustomerManagement.Api
         {
             services.AddMvc().AddControllersAsServices();
             services.AddControllers();
-
+            services.AddDbContext<CustomerManagementDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("WriteConnection")));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomerManagement.Api", Version = "v1" });
@@ -55,6 +57,10 @@ namespace CustomerManagement.Api
             .As<ICommandHandler<CreateCustomerCommand>>()
             .InstancePerLifetimeScope();
 
+            builder.RegisterType<CustomerManagementDbContext>()
+           .As<IUnitOfWork>()
+           .InstancePerLifetimeScope();
+
             builder.RegisterType<CustomerService>()
                 .As<ICustomerService>()
                 .InstancePerLifetimeScope();
@@ -67,6 +73,8 @@ namespace CustomerManagement.Api
             builder.RegisterType<AutofacCommandBus>()
              .As<ICommandBus>()
              .InstancePerLifetimeScope();
+
+           
 
 
         }

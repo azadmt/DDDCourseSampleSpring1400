@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagement.Api", "C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F471A645-F939-4026-B541-84C94FA9E000}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagement.Perdidtence.Ef", "CustomerManagement.Perdidtence.Ef\CustomerManagement.Perdidtence.Ef.csproj", "{E1E690D1-5402-46C5-B743-B9F5E9F65E41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagement.Persistence.Ef", "CustomerManagement.Perdidtence.Ef\CustomerManagement.Persistence.Ef.csproj", "{E1E690D1-5402-46C5-B743-B9F5E9F65E41}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagement.COnsole", "CustomerManagement.COnsole\CustomerManagement.COnsole.csproj", "{025B7F69-7908-49A9-9C94-2DFD104D11B4}"
 EndProject
@@ -49,7 +49,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanManagement.Api", "LoanM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Application", "Framework.Application\Framework.Application.csproj", "{9FF61795-267D-4A31-BA61-4177A4F7DE64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Configuration.Autofac", "Framework.Configuration.Autofac\Framework.Configuration.Autofac.csproj", "{BD3BD9F3-AF08-4E50-9BB5-7BD335900F3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Configuration.Autofac", "Framework.Configuration.Autofac\Framework.Configuration.Autofac.csproj", "{BD3BD9F3-AF08-4E50-9BB5-7BD335900F3E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Persistence.Ef", "Framework.Persistence.Ef\Framework.Persistence.Ef.csproj", "{B216B164-5C7E-4386-87CD-137795800961}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,10 @@ Global
 		{BD3BD9F3-AF08-4E50-9BB5-7BD335900F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD3BD9F3-AF08-4E50-9BB5-7BD335900F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD3BD9F3-AF08-4E50-9BB5-7BD335900F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B216B164-5C7E-4386-87CD-137795800961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B216B164-5C7E-4386-87CD-137795800961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B216B164-5C7E-4386-87CD-137795800961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B216B164-5C7E-4386-87CD-137795800961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -155,6 +161,7 @@ Global
 		{9BBF0B42-29CD-490A-A5AB-50C72CD29317} = {D2AD48A8-00AE-420E-ACAD-05CC8EB305C1}
 		{9FF61795-267D-4A31-BA61-4177A4F7DE64} = {34A21DAF-4D76-4908-AB9A-BF3E17097D0C}
 		{BD3BD9F3-AF08-4E50-9BB5-7BD335900F3E} = {34A21DAF-4D76-4908-AB9A-BF3E17097D0C}
+		{B216B164-5C7E-4386-87CD-137795800961} = {34A21DAF-4D76-4908-AB9A-BF3E17097D0C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0A86317-AF98-4782-BBEB-55338141C185}

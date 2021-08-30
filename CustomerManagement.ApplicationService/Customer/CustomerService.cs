@@ -16,8 +16,8 @@ namespace CustomerManagement.ApplicationService.Customer
         }
 
         public void CreateCustomer(string nationalCode)
-        {
-            var customer = new CustomerAggregate(Guid.NewGuid(), nationalCode);
+        {           
+            var customer = new CustomerAggregate(Guid.NewGuid(), "",nationalCode);
             customerRepository.Add(customer);
         }
 
