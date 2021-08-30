@@ -7,7 +7,7 @@ namespace CustomerManagement.ApplicationService.Contract.DataContract
     {
         public ApproveCustomerCommand()
         {
-            RetryCount = 5;
+            RetryCount = 3;
             RetryDuration = 4;
         }
         public Guid Id { get; set; }
