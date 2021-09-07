@@ -7,6 +7,7 @@ namespace Framework.Domain
 {
     public abstract class ValueObject
     {
+        protected ValueObject() { }
         protected abstract IEnumerable<object> GetEqualityComponents();
 
         public override bool Equals(object obj)

@@ -8,16 +8,17 @@ namespace LoanManagement.Domain.LoanTypeAggregate
 
         public string Title { get; }
         public int Code { get; }
-        public int InstallmentCount { get; }
-        public int PayDateDay { get; }
+        public int PayDuration { get; }
+        private LoanType()
+        {
 
-        public LoanType(Guid id, string title, int code, int installmentCount, int payDateDay) : base(id)
+        }
+        public LoanType(Guid id, string title, int code, int payDateDay) : base(id)
         {
 
             Title = title;
             Code = code;
-            InstallmentCount = installmentCount;
-            PayDateDay = payDateDay;
+            PayDuration = payDateDay;
         }
 
     }

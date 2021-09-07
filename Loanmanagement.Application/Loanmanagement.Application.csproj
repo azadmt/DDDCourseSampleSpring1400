@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Framework.Application\Framework.Application.csproj" />
+    <ProjectReference Include="..\Loanmanagement.Application.Contract\Loanmanagement.Application.Contract.csproj" />
     <ProjectReference Include="..\LoanManagement.Domain\LoanManagement.Domain.csproj" />
   </ItemGroup>
 

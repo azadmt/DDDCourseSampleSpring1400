@@ -6,14 +6,15 @@ namespace LoanManagement.Domain.LoanAggregate
 {
     public class Money : ValueObject
     {
-        public string Currency { get; }
-        public decimal Value { get; }
+        public string Currency { get; private set; }
+        public decimal Value { get; private set; }
         public Money(decimal value, string currency)
         {
             Value = value;
             Currency = currency;
         }
 
+        private Money() { }
 
         protected override IEnumerable<object> GetEqualityComponents()
         {

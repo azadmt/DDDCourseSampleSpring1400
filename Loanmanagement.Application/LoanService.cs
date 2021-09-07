@@ -1,4 +1,5 @@
-﻿using LoanManagement.Domain.LoanAggregate;
+﻿using Loanmanagement.Application.Contract;
+using LoanManagement.Domain.LoanAggregate;
 using LoanManagement.Domain.LoanTypeAggregate;
 using System;
 
@@ -58,23 +59,5 @@ namespace Loanmanagement.Application
 
             loanRepository.Update(loan);
         }
-    }
-
-    public class CreateLoanCommand
-    {
-        public Guid OwnerId { get; set; }
-        public Guid LoanTypeId { get; set; }
-        public decimal LoanAmount { get; set; }
-        public DateTime PayDate { get; set; }
-    }
-
-    public class ApproveLoanCommand
-    {
-        public Guid LoanId { get; set; }
-    }
-
-    public class PayLoanCommand
-    {
-        public Guid LoanId { get; set; }
     }
 }

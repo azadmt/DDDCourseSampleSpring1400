@@ -2,23 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Framework.Application;
 using Loanmanagement.Application;
+using Loanmanagement.Application.Contract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoanManagement.Api.Controllers
 {
-    public class LoanController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class LoanController : ControllerBase
     {
-        private LoanService loanService;
-        public LoanController(LoanService loanService)
+        private readonly ICommandBus bus;
+
+        public LoanController(ICommandBus bus)
         {
-        
+            this.bus = bus;
         }
-        
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+          
+            return Ok();
+        }
+
         [HttpPost]
         public IActionResult CreateLoan(CreateLoanCommand command)
         {
-            loanService.CreateLoan(command);
+            bus.Send(command);
             return Ok();
         }
     }

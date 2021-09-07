@@ -33,9 +33,13 @@ namespace LoanManagement.Domain.LoanAggregate
             this.LoanTypeId = loanType.Id;
             this.LoanAmount = loanAmount;
             State = LoanState.Requested;
-            SetPayDate(loanType.PayDateDay);
+            SetPayDate(loanType.PayDuration);
         }
 
+        private Loan()
+        {
+
+        }
 
         public void Approve()
         {
@@ -62,90 +66,6 @@ namespace LoanManagement.Domain.LoanAggregate
                 throw new LoanPaydateIsInPastException("LoanPaydateIsInPastException");
         }
 
-    }
-
-    //public class ApprovedLoan
-    //{
-    //    void Reject();
-    //    void Pay();
-    //}
-
-    //public class RejectedLoan
-    //{
-
-    //}
-    //public interface ILoanState
-    //{
-    //    void Approve();
-    //    void Reject();
-    //    void Pay();
-    //}
-    //public class RequestedLoanState : ILoanState
-    //{
-    //    public RequestedLoanState(Loan loan)
-    //    {
-
-    //    }
-    //    public void Approve()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public void Pay()
-    //    {
-    //        //
-    //    }
-
-    //    public void Reject()
-    //    {
-    //        //
-    //    }
-    //}
-    //public class ApprovedLoanState : ILoanState
-    //{
-    //    public ApprovedLoanState(Loan loan)
-    //    {
-
-    //    }
-    //    public void Approve()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public void Pay()
-    //    {
-    //     //
-    //    }
-
-    //    public void Reject()
-    //    {
-    //       //
-    //    }
-    //}
-
-    //public class PaidLoanState : ILoanState
-    //{
-    //    public void Approve()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public void Pay()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public void Reject()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
-    public enum LoanState
-    {
-        Requested,
-        Approved,
-        Paid,
-        Rejected
     }
 }
 
