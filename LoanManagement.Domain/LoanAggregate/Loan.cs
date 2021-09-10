@@ -1,4 +1,5 @@
 ﻿using Framework.Domain;
+using LoanManagement.Domain.Contract;
 using LoanManagement.Domain.LoanAggregate.Exception;
 using LoanManagement.Domain.LoanTypeAggregate;
 using System;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LoanManagement.Domain.LoanAggregate
 {
-    public class Loan : Entity
+    public class Loan : AggregateRoot
     {
         public Guid OwnerId { get; private set; }
         public Guid LoanTypeId { get; private set; }
@@ -23,7 +24,6 @@ namespace LoanManagement.Domain.LoanAggregate
         {
             Money amount = new Money(loanAmount, "");
             var loan = new Loan(Guid.NewGuid(), ownerId, loanType, amount, gurantors);
-
             return loan;
         }
 
@@ -34,6 +34,7 @@ namespace LoanManagement.Domain.LoanAggregate
             this.LoanAmount = loanAmount;
             State = LoanState.Requested;
             SetPayDate(loanType.PayDuration);
+            AddChanges(new LoanRequested(id, OwnerId, LoanTypeId, LoanAmount.Value));
         }
 
         private Loan()
@@ -44,6 +45,7 @@ namespace LoanManagement.Domain.LoanAggregate
         public void Approve()
         {
             State = LoanState.Approved;
+            AddChanges(new LoanRequested(id, OwnerId, LoanTypeId, LoanAmount.Value));
         }
         public void Reject()
         {

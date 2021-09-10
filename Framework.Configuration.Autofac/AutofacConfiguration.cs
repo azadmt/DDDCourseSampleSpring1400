@@ -1,10 +1,6 @@
 ﻿using Autofac;
-using Autofac.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Framework.Core.Messageing;
+using Framework.Messaging.MassTransit;
 
 namespace Framework.Configuration.Autofac
 {
@@ -12,7 +8,7 @@ namespace Framework.Configuration.Autofac
     {
         public static void Config(ContainerBuilder cb)
         {
-           // cb.RegisterType<Container>().As<IContainer>();
+            cb.RegisterType<MassTransitBus>().As<IEnterpriseServiceBus>();
         }
     }
 }

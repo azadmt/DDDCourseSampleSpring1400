@@ -11,6 +11,7 @@ using CustomerManagement.Persistence.Ef;
 using Framework.Application;
 using Framework.Configuration.Autofac;
 using Framework.Core.Persistence;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -38,11 +39,20 @@ namespace CustomerManagement.Api
             services.AddMvc().AddControllersAsServices();
             services.AddControllers();
             services.AddDbContext<CustomerManagementDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("WriteConnection")));
+            services.AddScoped<IUnitOfWork>(provider => provider.GetService<CustomerManagementDbContext>());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomerManagement.Api", Version = "v1" });
             });
 
+            services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
+            services.AddMassTransitHostedService();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -53,13 +63,14 @@ namespace CustomerManagement.Api
                 .As<ICommandHandler<ApproveCustomerCommand>>()
                 .InstancePerLifetimeScope();
 
-                    builder.RegisterType<CreateCustomerCommandHandler>()
-            .As<ICommandHandler<CreateCustomerCommand>>()
-            .InstancePerLifetimeScope();
+            builder.RegisterType<CreateCustomerCommandHandler>()
+    .As<ICommandHandler<CreateCustomerCommand>>()
+    .InstancePerLifetimeScope();
 
-            builder.RegisterType<CustomerManagementDbContext>()
-           .As<IUnitOfWork>()
-           .InstancePerLifetimeScope();
+           // builder.RegisterType<CustomerManagementDbContext>()
+           //.WithParameter("dbContextOptions", Get())
+           //.AsImplementedInterfaces()
+           //.InstancePerLifetimeScope();
 
             builder.RegisterType<CustomerService>()
                 .As<ICustomerService>()
@@ -74,7 +85,7 @@ namespace CustomerManagement.Api
              .As<ICommandBus>()
              .InstancePerLifetimeScope();
 
-           
+
 
 
         }
@@ -96,6 +107,13 @@ namespace CustomerManagement.Api
             {
                 endpoints.MapControllers();
             });
+        }
+
+        public DbContextOptions<CustomerManagementDbContext> Get()
+        {
+            var optBuilder = new DbContextOptionsBuilder<CustomerManagementDbContext>();
+            optBuilder.UseSqlServer(Configuration.GetConnectionString("WriteConnection"));
+            return optBuilder.Options;
         }
     }
 }

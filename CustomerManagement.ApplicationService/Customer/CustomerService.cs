@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CustomerManagement.ApplicationService.Customer
 {
-    public class CustomerService:ICustomerService
+    public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository customerRepository;
 
@@ -16,9 +16,9 @@ namespace CustomerManagement.ApplicationService.Customer
         }
 
         public void CreateCustomer(string nationalCode)
-        {           
-            var customer = new CustomerAggregate(Guid.NewGuid(), "",nationalCode);
-            customerRepository.Add(customer);
+        {
+            //var customer = new CustomerAggregate(Guid.NewGuid(), "", nationalCode);
+            //customerRepository.Add(customer);
         }
 
 

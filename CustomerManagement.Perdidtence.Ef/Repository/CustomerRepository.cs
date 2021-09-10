@@ -17,7 +17,6 @@ namespace CustomerManagement.Persistence.Ef
         public void Add(CustomerAggregate customerAggregate)
         {
             dbContext.Add(customerAggregate);
-            dbContext.SaveChanges();
         }
 
         public CustomerAggregate Get(Guid id)

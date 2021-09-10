@@ -17,7 +17,7 @@ where TCommand : ICommand
             {
                 commandHandler.Handle(command);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw ;

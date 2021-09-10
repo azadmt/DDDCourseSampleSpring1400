@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CustomerManagement.Domain.Test
 {
-    public class UnitTest1
+    public class When_Create_Customer
     {
         [Fact]
         public void Test1()

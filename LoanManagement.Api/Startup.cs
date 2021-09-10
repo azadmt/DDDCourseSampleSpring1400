@@ -37,7 +37,9 @@ namespace LoanManagement.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LoanManagement.Api", Version = "v1" });
             });
-        }
+
+         
+            }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {

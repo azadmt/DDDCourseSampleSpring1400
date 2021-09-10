@@ -27,14 +27,15 @@ namespace CustomerManagement.Api.Controllers
         public IActionResult CreateCustomer(CreateCustomerCommand command)
         {
             commandBus.Send(command);
-            return View();
+            return Ok();
         }
+
 
         [HttpPost("Approve")]
         public IActionResult Approve(Guid customerId)
         {
             _customerService.Approve(customerId);
-            return View();
+            return Ok();
         }
     }
 }

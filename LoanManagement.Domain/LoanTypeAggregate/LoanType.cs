@@ -1,11 +1,11 @@
 ﻿using Framework.Domain;
+using LoanManagement.Domain.Contract;
 using System;
 
 namespace LoanManagement.Domain.LoanTypeAggregate
 {
-    public class LoanType : Entity
+    public class LoanType : AggregateRoot
     {
-
         public string Title { get; }
         public int Code { get; }
         public int PayDuration { get; }
@@ -13,12 +13,12 @@ namespace LoanManagement.Domain.LoanTypeAggregate
         {
 
         }
-        public LoanType(Guid id, string title, int code, int payDateDay) : base(id)
+        public LoanType(Guid id, string title, int code, int payDuration) : base(id)
         {
-
             Title = title;
             Code = code;
-            PayDuration = payDateDay;
+            PayDuration = payDuration;
+            AddChanges(new LoanTypeCreated(id, Title, Code, PayDuration));
         }
 
     }
