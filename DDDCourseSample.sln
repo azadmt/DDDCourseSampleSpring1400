@@ -55,19 +55,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Persistence.Ef", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loanmanagement.Application.Contract", "Loanmanagement.Application.Contract\Loanmanagement.Application.Contract.csproj", "{B187874C-CA02-419F-9FC2-6FDF9E817675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Messaging.MassTransit", "Framework.Messaging.MassTransit\Framework.Messaging.MassTransit.csproj", "{8669B712-31C5-4EC7-972C-E1369CE49933}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Messaging.MassTransit", "Framework.Messaging.MassTransit\Framework.Messaging.MassTransit.csproj", "{8669B712-31C5-4EC7-972C-E1369CE49933}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QueryModel", "QueryModel", "{1A36CBCB-3AC3-4067-BCBD-6DF30CD96F81}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-QueryModel", "4-QueryModel", "{1A36CBCB-3AC3-4067-BCBD-6DF30CD96F81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryModel.Data", "QueryMode.Data\QueryModel.Data.csproj", "{CF04C03B-EDE2-4D57-80C6-A73512D1ED28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryModel.Data", "QueryMode.Data\QueryModel.Data.csproj", "{CF04C03B-EDE2-4D57-80C6-A73512D1ED28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryModel.Handler", "QueryModel.Handler\QueryModel.Handler.csproj", "{3507EB42-E457-429B-A4FB-2926CDC3A4C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryModel.Handler", "QueryModel.Handler\QueryModel.Handler.csproj", "{3507EB42-E457-429B-A4FB-2926CDC3A4C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerManagement.Domain.Contract", "CustomerManagement.Domain.Contract\CustomerManagement.Domain.Contract.csproj", "{4D55C4B1-B323-4AA8-9217-F074B71B6150}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagement.Domain.Contract", "CustomerManagement.Domain.Contract\CustomerManagement.Domain.Contract.csproj", "{4D55C4B1-B323-4AA8-9217-F074B71B6150}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanManagement.Domain.Contract", "LoanManagement.Domain.Contract\LoanManagement.Domain.Contract.csproj", "{939355CD-1F31-4731-B115-B22014AC4230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanManagement.Domain.Contract", "LoanManagement.Domain.Contract\LoanManagement.Domain.Contract.csproj", "{939355CD-1F31-4731-B115-B22014AC4230}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryModel.Api", "QueryModel.Api\QueryModel.Api.csproj", "{95FA4930-8AC6-4023-A4F5-5CD668219046}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryModel.Api", "QueryModel.Api\QueryModel.Api.csproj", "{95FA4930-8AC6-4023-A4F5-5CD668219046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityManagement", "SecurityManagement\SecurityManagement.csproj", "{4C9DE9BE-B0DB-4C69-BBEF-7A2E8C6EBE55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -179,6 +181,10 @@ Global
 		{95FA4930-8AC6-4023-A4F5-5CD668219046}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95FA4930-8AC6-4023-A4F5-5CD668219046}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95FA4930-8AC6-4023-A4F5-5CD668219046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C9DE9BE-B0DB-4C69-BBEF-7A2E8C6EBE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C9DE9BE-B0DB-4C69-BBEF-7A2E8C6EBE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C9DE9BE-B0DB-4C69-BBEF-7A2E8C6EBE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C9DE9BE-B0DB-4C69-BBEF-7A2E8C6EBE55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

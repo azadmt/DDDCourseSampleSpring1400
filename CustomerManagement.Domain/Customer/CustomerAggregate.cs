@@ -27,7 +27,8 @@ namespace CustomerManagement.Domain.Customer
 
         public void Approve()
         {
-            //TODO
+            AddChanges(new CustomerApproved(Id));
+
         }
     }
 }

@@ -45,7 +45,7 @@ namespace LoanManagement.Domain.LoanAggregate
         public void Approve()
         {
             State = LoanState.Approved;
-            AddChanges(new LoanRequested(id, OwnerId, LoanTypeId, LoanAmount.Value));
+            AddChanges(new LoanRequested(Id, OwnerId, LoanTypeId, LoanAmount.Value));
         }
         public void Reject()
         {

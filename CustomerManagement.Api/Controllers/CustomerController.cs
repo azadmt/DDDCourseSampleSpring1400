@@ -24,6 +24,7 @@ namespace CustomerManagement.Api.Controllers
         }
 
         [HttpPost]
+        [HassPermission(Operation = "RegisterCustomer")]
         public IActionResult CreateCustomer(CreateCustomerCommand command)
         {
             commandBus.Send(command);
@@ -37,5 +38,12 @@ namespace CustomerManagement.Api.Controllers
             _customerService.Approve(customerId);
             return Ok();
         }
+    }
+
+
+
+    public interface ISecurityService
+    {
+        void GetUserPermission();
     }
 }

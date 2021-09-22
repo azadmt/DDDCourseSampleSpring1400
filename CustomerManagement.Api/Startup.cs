@@ -21,6 +21,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace CustomerManagement.Api
 {
@@ -43,6 +44,7 @@ namespace CustomerManagement.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomerManagement.Api", Version = "v1" });
+                c.OperationFilter<AddRequiredHeaderParameter>();
             });
 
             services.AddMassTransit(x =>
@@ -114,6 +116,24 @@ namespace CustomerManagement.Api
             var optBuilder = new DbContextOptionsBuilder<CustomerManagementDbContext>();
             optBuilder.UseSqlServer(Configuration.GetConnectionString("WriteConnection"));
             return optBuilder.Options;
+        }
+    }
+
+
+    public class AddRequiredHeaderParameter : IOperationFilter
+    {
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
+        {
+            if (operation.Parameters == null)
+                operation.Parameters = new List<OpenApiParameter>();
+
+            operation.Parameters.Add(new OpenApiParameter()
+            {
+                Name = "token",
+                In = ParameterLocation.Header,
+                Required = true
+            });
+
         }
     }
 }

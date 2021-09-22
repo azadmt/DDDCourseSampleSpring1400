@@ -14,6 +14,8 @@ namespace Framework.Application
         public void Handle(TCommand command)
         {
             Debug.WriteLine("start :"+command.ToString());
+
+            //Serilog,Nlog,Log4Net (File,Database,Logserver)
             commandHandler.Handle(command);
             Debug.WriteLine("end :"+command.ToString());
 

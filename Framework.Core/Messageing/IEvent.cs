@@ -7,7 +7,7 @@ namespace Framework.Core.Messageing
 
     }
 
-    public interface IIntegrationEvent
+    public interface IIntegrationEvent 
     {
 
     }
@@ -15,8 +15,8 @@ namespace Framework.Core.Messageing
     public class OutboxMessage
     {
         public Guid Id { get; set; }
-        public string MessageContent{ get; set; }
-        public string MessageType{ get; set; }
-        public bool IsPublished{ get; set; }
+        public string MessageContent { get; set; }
+        public string MessageType { get; set; }
+        public bool IsPublished { get; set; }
     }
 }

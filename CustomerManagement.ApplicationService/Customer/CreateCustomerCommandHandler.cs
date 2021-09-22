@@ -33,18 +33,19 @@ namespace CustomerManagement.ApplicationService.Customer
             var work = new Address(command.WorkAddress_Province, command.WorkAddress_City, command.WorkAddress_Street);
             var customer = new CustomerAggregate(Guid.NewGuid(), command.Name, command.NationalCode, home, work);
             customerRepository.Add(customer);
+            
             UnitOfWork.Commit();
 
             //var ce = new CustomerCreated(
-            //    c.Id,
-            //    c.Name,
-            //    c.NationalCode,
-            //    c.HomeAddress.Province,
-            //    c.HomeAddress.City,
-            //    c.HomeAddress.Street,
-            //    c.WorkAddress.Province,
-            //    c.WorkAddress.City,
-            //    c.WorkAddress.Street
+            //   customer.Id,
+            //   command.Name,
+            //   command.NationalCode,
+            //   command.HomeAddress_Province,
+            //   command.HomeAddress_City,
+            //   command.HomeAddress_Street,
+            //   command.WorkAddress_Province,
+            //   command.WorkAddress_City,
+            //   command.WorkAddress_Street
             //    );
             //Task.Run(() => enterpriseServiceBus.PublishAsync(ce));
         }
